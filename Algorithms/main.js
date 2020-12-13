@@ -130,6 +130,74 @@ getLetter =()=>{
 }
 console.log(getLetter())
 
+//Extension 1: 
+printInLoop= words => {
+    let i=0
+    while(true){
+        if(i === words.length){
+            i =0
+        }
+        console.log(words[i]);
+        i++
+    }
+}
+// printInLoop(["down", "the", "rabbit", "hole"])
+
+//Extension 2: time complexity is O(n)
+findClosest= (points, point)=>{
+    if(points.length ===0){
+        console.log('the array you provided is not reasonable');
+        return null;
+    }
+    let distance = Math.sqrt(Math.pow(points[0].x - point.x,2) + Math.pow(points[0].y - point.y,2))
+    let closestPoint = points[0]
+    for(let i=1; i< points.length; i++){
+        let thisDistance = Math.sqrt(Math.pow(points[i].x - point.x,2) + Math.pow(points[i].y - point.y,2))
+        if(thisDistance < distance){
+            distance = thisDistance
+            closestPoint = points[i]
+        }
+    }
+    console.log(closestPoint);
+    return closestPoint
+}
+let pizzaLocations = [
+    { x: 6, y: 12 },
+    { x: 3, y: 1 },
+    { x: 9, y: 0 },
+    { x: 4, y: 10 }
+]
+
+let homeLocation = { x: 4, y: 2 }
+
+findClosest(pizzaLocations, homeLocation)
+
+//Extension 3: time complexity is O(n)
+secretEncrypt = (str, code) => {
+    str = str.toLowerCase()
+    let encryptedStr = ''
+    let j
+    for(let i=0; i<str.length ; i++){
+        j= i % code.length
+        let diff = code.charCodeAt(j) - 96
+        encryptedStr += String.fromCharCode(str.charCodeAt(i) + diff)
+    }
+    return encryptedStr
+}
+secretEncrypt("elephant", "cab")
+
+//Extension 4: time complexity is O(n)
+secretDecrypt = (encryptedMessage, secret) => {
+    let decryptedStr = ''
+    let j 
+    for(let i=0; i< encryptedMessage.length; i++){
+        j = i % secret.length
+        let diff = secret.charCodeAt(j) - 96
+        decryptedStr += String.fromCharCode(encryptedMessage.charCodeAt(i) - diff)
+    }
+    return decryptedStr
+}
+secretDecrypt('hmgsicqu', 'cab')
 
 
 
