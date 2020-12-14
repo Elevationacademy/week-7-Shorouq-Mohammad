@@ -33,7 +33,7 @@ printBackwardsStars = num => {
 }
 printBackwardsStars(5)
 
-//Exercise 3: time complexity is O(n)
+//Exercise 3: time complexity is O(m+n)
 printStarSeries = (num, count) => {
     let starSeries = printStars(num)
     starSeries += printBackwardsStars(num - 1 )
@@ -115,17 +115,17 @@ const jumble = function (arr1, arr2) {
 jumble(colors, foods) 
 
 //Exercise 9: time Complexity is O(1)
-const rawDist = {
-    A: 60,
-    B: 10,
-    C: 10,
-    D: 20
-}
 getLetter =()=>{
+    const rawDist = {
+        A: 60,
+        B: 10,
+        C: 10,
+        D: 20
+    }
     const num = Math.random()
-    if(num <= 0.6) return 'A'
-    else if(num <= 0.8) return 'D'
-    else if(num <= 0.9) return 'B'
+    if(num <= rawDist.A) return 'A'
+    else if(num <= rawDist.D) return 'D'
+    else if(num <= rawDist.B) return 'B'
     else return 'C'
 }
 console.log(getLetter())
